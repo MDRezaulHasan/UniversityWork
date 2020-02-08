@@ -1,0 +1,54 @@
+.debug{
+    border-style: solid;
+}
+@media (min-width:500px){
+    .flexParent{
+        flex:1;
+        display:flex;
+        flex-direction: row;
+        height: 100%;
+    }
+ }
+ .sidebar{
+     width: 400px;
+ }
+.mainContent{
+    flex:1;
+    overflow:auto;
+}
+.spinnerClass{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    vertical-align: center;
+}
+.priceTable{
+    table-layout:fixed;
+}
+
+
+.dishDisplay{
+    width: 200px;
+    height: 150px;
+    font-size: small;
+    text-align: center;
+    display:inline-block;
+    vertical-align: top;
+}
+.dishImg{
+    height: 100px;
+}
+.input{
+    border: 1px;
+    border-style: solid;
+}
+.searchButton{
+    border: 1px;
+    border-style: solid;
+}
+.texthead{
+    word-wrap: break-word;
+    width: 200px;
+}
+.hide{ display:none;}
+.Nav{float:right;}

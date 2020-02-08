@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css"> <!--reference to css file-->
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<body>
+    <div class="flexParent"><!--ansestor-->
+        <div id="sidebar" class="sidebar debug"></div> <!--for development purpose-->
+        <div id="search" class="mainContent debug"></div>
+        <div id="summary" class="mainContent hide debug"></div>
+  </div>
+</body>
+<script src="js/util/renderPromise.js"></script>
+<script src="js/apiConfig.js"></script>
+<script src="js/DinnerModel.js"></script>
+<script src="http://www.csc.kth.se/~cristi/hyperscript/0.1.js"></script>
+<script src="js/sidebar/sidebarView.js"></script>
+<script src="js/sidebar/sidebarController.js"></script>
+<script src="js/summary/summaryView.js"></script>
+<script src="js/summary/summaryController.js"></script>
+<script src="js/search/searchView.js"></script>
+<script src="js/search/searchController.js"></script>
+<script src="js/app.js"></script>
+
+</html>
