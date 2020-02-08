@@ -1,12 +1,14 @@
 const model= new DinnerModel();
+window.location.hash = "search";
 const summaryNav=[()=> show("summary"), "Summary"];
 const backToSearch=[()=> show("search"), "Back to search"];
 new SidebarController(model, document.body.querySelector("#sidebar"));
 new SummaryController(model, document.body.querySelector("#summary"), backToSearch);
 new SearchController(model, document.body.querySelector("#search"), summaryNav);
 const sections=["search", "summary"]
-
+//window.onhashchange = show();
 function show(section){
+  window.location.hash = section;
   if(section == sections[1])
   {
   document.body.querySelector("#"+ section).classList.remove("hide");//TODO hide all from the section array, using document.body.querySelector("#"+sectionName).classList add
@@ -15,6 +17,7 @@ function show(section){
 else {
   document.body.querySelector("#"+ section).classList.remove("hide");//TODO hide all from the section array, using document.body.querySelector("#"+sectionName).classList add
   document.body.querySelector("#summary").classList.add("hide");
+
 }
 }
 /*function onModuleChange(payload){
