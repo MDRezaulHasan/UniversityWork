@@ -38,11 +38,7 @@ class SearchView{
     isDishRepresentation(clickedNode){
         if(clickedNode.className.includes("dish")&&(clickedNode.tagName.toLowerCase()=="img"||clickedNode.tagName.toLowerCase()=="p")){
                 console.log("Clicked Dish: "+clickedNode.parentElement.id);
-                if (window.confirm("Do you want to add "+clickedNode.parentElement.title+" to your menu?")) {
-                    return clickedNode.parentElement.id;
-                  }else{
-                      return null;
-                  }
+                return clickedNode.parentElement.id; 
         }else{
             return null;
         }
