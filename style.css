@@ -52,3 +52,10 @@
 }
 .hide{ display:none;}
 .Nav{float:right;}
+.detailstitle {
+    font-size: medium;
+    text-align: left;
+}
+.detailsImg{
+    height: 150px;
+}

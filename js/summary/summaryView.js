@@ -1,7 +1,7 @@
-function SummaryView({ingredients,guests,whenDone:[ doneCallback, doneMessage]}){
+function SummaryView({ingredients,guests,Totalprice,whenDone:[ doneCallback, doneMessage]}){
    return h("div",
             h("div", "Dinner for ", guests, " people"),
-            h("div","Total price: "+ model.getTotalPriceSum(ingredients), h("div",{className:"Nav"},h("button", {onClick: e=> doneCallback()},doneMessage)),
+            h("div","Total price: "+ Totalprice, h("div",{className:"Nav"},h("button", {onClick: e=> doneCallback()},doneMessage)),
             h("div", h("table",{border:"1"},
                 h("tr",
                     h("th",{className:"texthead"},"Ingredients"),h("th",{className:"texthead"},"Supermarket Aisle"),h("th",{className:"texthead"},"Amount")),ingredients.sort(function(a,b){

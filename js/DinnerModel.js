@@ -64,7 +64,12 @@ class DinnerModel{
         let dishesCopy = Array.from(this.dishes); //a deep copy
         return dishesCopy;
     }
-
+    isInMenu(dish)
+    {if(this.dishes.some(el => el.id === dish.id))
+    return true;
+    else
+    return false;
+    }
     getIngredients(){
         let ingredientCopy = Array.from(this.ingredients);
         return ingredientCopy;
