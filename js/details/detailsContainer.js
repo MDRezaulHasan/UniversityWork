@@ -1,21 +1,61 @@
-class DishDetailsContainer{
-    constructor(model, root, onAdd, onCancel)
-    { this.model = model;
+class DishDetailsContainer {
+  constructor(model, root, onAdd, onCancel) {
+    this.model = model;
     this.root = root;
     this.onAdd = onAdd;
-    this.onCancel = onCancel; 
-    [this.onAddCallback, this.onAddLabel]=this.onAdd;
-    [this.onCancelCallback, this.onCancelLabel]=this.onCancel;
+    this.onCancel = onCancel;
+    [this.onAddCallback, this.onAddLabel] = this.onAdd;
+    [this.onCancelCallback, this.onCancelLabel] = this.onCancel;
     //model.addObserver(()=> this.currentDish?createDishDisplay(this.currentDish).render(root):null);
-    model.addObserver(()=> this.currentDish?this.createDishDisplay(this.currentDish).render(root):null);
-    }
-    createDishDisplay(dish){
+    model.addObserver(() =>
+      this.currentDish
+        ? this.createDishDisplay(this.currentDish).render(root)
+        : null
+    );
+    model.addObserver(() => {
+      this.saveItemInLocalStorage();
+    });
+  }
+  createDishDisplay(dish) {
     //const update=()=> h("DishDetailsView",{dish,addControl:[()=>{this.model.addToMenu(),this.onAddCallback()},this.onAddLabel],onCancel:[()=>{this.onCancelCallback(),this.onCancelLabel}],price:this.model.getDishPrice(dish),guests:this.model.getNumberOfGuests(dish),inMenu:this.model.isInMenu(dish)});
-       
-       return h("DishDetailsView",{dish,addControl:[()=>{this.model.addToMenu(dish),this.onAddCallback()},this.onAddLabel],onCancel:[()=>{this.onCancelCallback()},this.onCancelLabel],price:this.model.getDishPrice(dish),guests:this.model.getNumberOfGuests(dish),inMenu:this.model.isInMenu(dish)});
-    }
-    render(id){  
-        renderPromise(this.model.getDishDetails(id),
-              dish => { return this.createDishDisplay(this.currentDish = dish); },
-              this.root)
-    }}
+
+    return h("DishDetailsView", {
+      dish,
+      addControl: [
+        () => {
+          this.model.addToMenu(dish), this.onAddCallback();
+        },
+        this.onAddLabel
+      ],
+      onCancel: [
+        () => {
+          this.onCancelCallback();
+        },
+        this.onCancelLabel
+      ],
+      price: this.model.getDishPrice(dish),
+      guests: this.model.getNumberOfGuests(dish),
+      inMenu: this.model.isInMenu(dish)
+    });
+  }
+  saveItemInLocalStorage() {
+    console.log("Save item called");
+    const setItemInLocalStorage = localStorage.setItem(
+      "dinnerModel",
+      JSON.stringify({
+        guests: model.getNumberOfGuests(),
+        dishes: model.getMenu()
+      })
+    );
+  }
+
+  render(id) {
+    renderPromise(
+      this.model.getDishDetails(id),
+      dish => {
+        return this.createDishDisplay((this.currentDish = dish));
+      },
+      this.root
+    );
+  }
+}
