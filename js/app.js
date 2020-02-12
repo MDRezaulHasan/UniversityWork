@@ -1,6 +1,8 @@
-const modelString = localStorage.getItem("dinnerMOdel");
-let modelObject = {};
-modelObject = JSON.parse(modelString);
+const modelString = localStorage.getItem("dinnerModel");
+let modelObject = JSON.parse(modelString);
+
+modelObject = modelObject ? modelObject : {};
+console.log(modelObject);
 
 const model = new DinnerModel(modelObject);
 window.location.hash = "search";
